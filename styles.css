@@ -1,0 +1,774 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    transition: background 0.5s, color 0.5s;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header.scrolled {
+    background-color: #333; 
+    color: white; 
+    background: black;
+}
+
+.header-left, .main-nav, .nav-icons {
+    color: black; /* Initial color of the text */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px;
+    }
+    .logo {
+        font-size: 1.2em;
+    }
+}
+
+.main-nav {
+    display: flex;
+}
+
+.nav-links {
+    list-style-type: none;
+    display: flex;
+    padding: 0 20px;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white; /* Initial color for links */
+    transition: color 0.5s ease;
+}
+
+.nav-links a:hover {
+    color: #ffbd59; /* Hover color for links */
+}
+
+.logo {
+    font-size: 1.85rem;
+    color: white; /* Initial color for logo */
+}
+
+.nav-icons {
+    display: flex; /* Use flexbox to arrange icons */
+    justify-content: space-between; /* Space between icons */
+}
+
+.icons-links {
+    list-style: none; /* Remove default list styles */
+    padding: 0 20px; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox for horizontal alignment */
+}
+
+.icons-links li {
+    margin: 0 15px; /* Add horizontal margin for spacing between icons */
+}
+
+.icons-links i {
+    font-size: 20px; /* Change icon size (adjust as needed) */
+    color: white; /* Initial color for icons */
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.icons-links i:hover {
+    font-size: 20px; /* Change icon size (adjust as needed) */
+    color: #ffbd59; /* Set icon color (adjust as needed) */
+    cursor: pointer;
+}
+
+/* Change colors on scroll */
+header.scrolled .header-left,
+header.scrolled .main-nav,
+header.scrolled .nav-icons {
+    color: white; /* Change text color to black on scroll */
+}
+
+header.scrolled .nav-links a,
+header.scrolled .logo,
+header.scrolled .icons-links i {
+    color: white; /* Change font color to black on scroll */
+}
+
+/* Change color on scroll */
+header.scrolled .toggle .common {
+    background-color: white; /* Change to black on scroll */
+}
+
+/* Sidebar Container */
+.sidebar {
+    width: 250px; /* Fixed width for the sidebar */
+    background-color: #333; /* Dark navy blue */
+    color: white; /* White text */
+    padding: 20px; /* Padding around the content */
+    position: fixed; /* Fixed position on the left */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    height: 100vh; /* Full height of the viewport */
+    overflow-y: auto; /* Scroll if content exceeds height */
+    font-family: Arial, sans-serif; /* Font style */
+    transform: translateX(-100%); /* Initially hide off-screen */
+    transition: transform 0.3s ease; /* Smooth transition */
+    z-index: 10;
+}
+
+/* Sidebar Active State */
+.sidebar.active {
+    transform: translateX(0); /* Slide in when active */
+}
+
+/* Close Menu Heading */
+.sidebar h1 {
+    font-size: 1.5rem; /* Font size for close menu heading */
+    color: white; /* Accent color */
+    margin-bottom: 20px; /* Space below heading */
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+/* Sidebar Section Titles */
+.sidebar-section h2 {
+    font-size: 1.2rem; /* Font size for section titles */
+    color: #ffbd59; /* Accent color */
+    margin: 15px 0; /* Margin above and below section titles */
+    border-bottom: 1px solid #ffbd59; /* Underline for section titles */
+    padding-bottom: 5px; /* Padding below the title */
+}
+
+/* Sidebar List */
+.sidebar-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+}
+
+/* Sidebar Sub-Items */
+.sidebar-section ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.sidebar-section ul li {
+    font-size: 1rem;
+    padding: 8px 0; 
+    color: white; 
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover State for List Items */
+.sidebar-section ul li:hover {
+    color: #ffbd59; /* Change color on hover */
+    font-weight: bold; /* Bold text on hover */
+}
+
+/* Hamburger Toggle Button */
+.toggle {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: relative;
+    z-index: 11;
+}
+
+.toggle .common {
+    position: absolute;
+    height: 2px;
+    width: 25px;
+    background-color: white;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.toggle .top_line {
+    top: 8px;
+}
+
+.toggle .middle_line {
+    top: 15px;
+}
+
+.toggle .bottom_line {
+    top: 22px;
+}
+
+/* Opened State */
+.toggle.open .top_line {
+    transform: rotate(45deg);
+    top: 15px;
+    background-color: #ffbd59;
+}
+
+.toggle.open .middle_line {
+    opacity: 0;
+}
+
+.toggle.open .bottom_line {
+    transform: rotate(-45deg);
+    top: 15px;
+    background-color: white;
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Auto height on mobile */
+    }
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section Styles */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.cta-button {
+    background-color: white; /* Primary Button Color */
+    color: #000435;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: black;     
+}
+
+/* Health-Care Section Styles */
+
+
+  .healthcare-story-section {
+    padding: 60px 20px;
+    background-color: black;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .story-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .story-image {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .story-image img {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .story-text {
+    flex: 1;
+    padding-left: 30px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    color: #ffbd59;
+    margin-bottom: 15px;
+  }
+
+  .section-description {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .story, .mission {
+    font-size: 1rem;
+    color: white;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+/* Features Section Styles */
+.features {
+    background-color: #333; /* Light background */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 40px;
+    color: white;
+}
+
+.features h3{
+    color: white;
+}
+
+.features p{
+    color: white;
+}
+
+.feature-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 20px; /* Adds spacing between cards */
+}
+
+.feature-card {
+    background-color: #333;
+    border: 1px solid #ffbd59;
+    border-radius: 5px;
+    padding: 20px;
+    width: 30%; /* Adjust the width to fit three cards in a row */
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+    border-color: #ffbd59;
+}
+
+.feature-card i{
+    font-size: 24px;
+}
+
+.feature-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Medical Solutions Section */
+.medical-solutions {
+    background-color: #333;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.medical-solutions h2 {
+    font-size: 2.5rem;
+    color: #ffbd59;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+.medical-solutions p {
+    color: white;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Swiper Section */
+.swiper-section {
+    background-color: white;
+    padding: 40px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: -1; 
+}
+
+/* Swiper Styles */
+.swiper {
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1;
+}
+
+.swiper-wrapper {
+    display: flex;
+    z-index: 1;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    height: 400px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.solution-card {
+    background-color: #333;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    flex-grow: 1;
+    z-index: 1;
+}
+
+.solution-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.solution-card h3 {
+    font-size: 1.5rem;
+    color: #ffbd59;
+    margin-bottom: 15px;
+}
+
+.solution-card p {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Call to Action Button */
+.cta-button {
+    text-decoration: none;
+    background-color: #ffbd59;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #005f65;
+    transform: translateY(-3px);
+}
+
+/* Pagination */
+.swiper-pagination {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.swiper-pagination:hover {
+    opacity: 1;
+}
+
+.swiper-pagination-bullet {
+    background: #ffbd59;
+    opacity: 0.8;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ffbd59;
+}
+
+/* Hide Swiper Scrollbar */
+.swiper-scrollbar {
+    display: none;
+}
+
+/* Navigation Buttons */
+.swiper-button-prev, .swiper-button-next {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-button-next {
+    opacity: 1;
+    color: #ffbd59;
+    visibility: visible;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .swiper-slide {
+        width: 50%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .swiper-slide {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-slide {
+        width: 100%;
+        height: auto;
+    }
+
+    .medical-solutions h2 {
+        font-size: 2rem;
+    }
+
+    .medical-solutions p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 8px 16px;
+    }
+}
+
+/* Services Section Styles */
+.services {
+    padding: 40px 20px;
+    text-align: center;
+    z-index: 1;
+}
+
+.service {
+    margin-bottom: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffbd59; /* Navy color */
+    color: black;
+    padding: 40px 20px;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    flex: 1;
+}
+
+.footer-links, .footer-contact, .footer-socials {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-links h4, 
+.footer-contact h4,
+.footer-socials h4 {
+    margin-bottom: 10px;
+    color: black; /* Teal color for headings */
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 5px 0;
+}
+
+.footer-links a {
+    color: black;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: black; /* Teal color on hover */
+}
+
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a{
+    color: black;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid black;
+    padding-top: 10px;
+}
+
+/* General Mobile Styles */
+@media (max-width: 768px) {
+    /* Adjust header layout */
+    header {
+        padding: 10px;
+    }
+
+    /* Logo scaling */
+    .logo img {
+        height: 30px;
+    }
+    .logo {
+        font-size: 1.2em;
+    }
+
+    /* Navigation */
+    .main-nav {
+        display: none; /* Hide nav links on small screens */
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 100%; /* Full-width sidebar */
+        height: 100vh;
+    }
+
+    /* Flex adjustments */
+    .container, .feature-cards {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+    }
+
+    /* Feature cards */
+    .feature-card {
+        width: 90%; /* Full width on small screens */
+    }
+
+    /* Swiper */
+    .swiper-slide {
+        width: 100%; /* Single slide view on mobile */
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links, .footer-contact, .footer-socials {
+        margin: 5px 0; /* Reduce spacing */
+    }
+
+    .footer-logo img {
+        height: 40px; /* Scale footer logo */
+    }
+}
+
+/* Very Small Mobile Screens */
+@media (max-width: 480px) {
+    /* Logo font size */
+    .logo {
+        font-size: 1rem;
+    }
+
+    /* CTA button */
+    .cta-button {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Swiper height */
+    .swiper-slide {
+        height: auto;
+    }
+
+    /* Medical Solutions */
+    .medical-solutions h2 {
+        font-size: 1.5rem;
+    }
+    .medical-solutions p {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+
+    /* Sidebar */
+    .sidebar h1 {
+        font-size: 1.2rem;
+    }
+    .sidebar-section h2 {
+        font-size: 1rem;
+    }
+    .sidebar-section ul li {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px;
+    }
+}
